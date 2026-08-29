@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Boss Suite Nederland</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1c1a17;
+    --paper: #f6f1e7;
+    --paper-alt: #efe8d8;
+    --gold: #b98a2f;
+    --gold-deep: #96702a;
+    --muted: #6f6a5f;
+    --line: #ddd3bc;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Nunito Sans', sans-serif;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2 { font-family: 'Playfair Display', serif; font-weight: 700; }
+
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 26px 32px;
+    max-width: 900px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 800; text-decoration: none; color: var(--ink); }
+  .logo em { font-style: normal; color: var(--gold); }
+  .nav-right { display: flex; align-items: center; gap: 18px; }
+  .back-link {
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 2px;
+  }
+  .lang-switch { display: flex; gap: 8px; font-size: 0.85rem; font-weight: 800; }
+  .lang-switch a { color: var(--muted); text-decoration: none; }
+  .lang-switch a.active { color: var(--gold-deep); }
+
+  main {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 24px 32px 100px;
+  }
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--gold-deep);
+  }
+  h1 { font-size: 2.2rem; margin-top: 12px; margin-bottom: 8px; }
+  .updated { color: var(--muted); font-size: 0.9rem; margin-bottom: 40px; }
+
+  h2 {
+    font-size: 1.3rem;
+    margin-top: 40px;
+    margin-bottom: 14px;
+    color: var(--ink);
+  }
+  p { margin-bottom: 14px; font-size: 1rem; color: #3a362f; }
+  ul { margin: 0 0 16px 0; padding-left: 0; list-style: none; }
+  li {
+    position: relative;
+    padding-left: 22px;
+    margin-bottom: 8px;
+    font-size: 1rem;
+    color: #3a362f;
+  }
+  li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+  a.inline-link { color: var(--gold-deep); font-weight: 700; text-decoration: underline; }
+
+  .contact-box {
+    margin-top: 40px;
+    background: var(--paper-alt);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 24px 28px;
+  }
+  .contact-box p { margin-bottom: 0; }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 28px 32px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+</style>
+</head>
+<body>
+
+  <nav>
+    <a class="logo" href="/">Boss Suite <em>Nederland</em></a>
+    <div class="nav-right">
+      <div class="lang-switch">
+        <a href="/privacy-policy.html">NL</a>
+        <a href="/privacy-policy-en.html" class="active">EN</a>
+      </div>
+      <a class="back-link" href="/">&larr; Back to the website</a>
+    </div>
+  </nav>
+
+  <main>
+    <span class="eyebrow">Legal</span>
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated: June 2026</p>
+
+    <p>At Boss Suite Nederland, we value your privacy.</p>
+    <p>When you make a purchase or contact us, we may process personal data such as:</p>
+    <ul>
+      <li>Name</li>
+      <li>Email address</li>
+      <li>Company name (if provided)</li>
+      <li>Payment details via Stripe</li>
+    </ul>
+
+    <h2>What we use your data for</h2>
+    <p>This data is used exclusively for:</p>
+    <ul>
+      <li>Processing purchases</li>
+      <li>Customer support</li>
+      <li>Access to Boss Suite</li>
+      <li>Legal and administrative obligations</li>
+    </ul>
+
+    <h2>Payments</h2>
+    <p>Payments are processed via Stripe. For more information, please refer to <a class="inline-link" href="https://stripe.com/privacy" target="_blank" rel="noopener">Stripe's privacy policy</a>.</p>
+
+    <h2>Sharing with third parties</h2>
+    <p>We do not sell your data to third parties.</p>
+
+    <div class="contact-box">
+      <p><strong>Have questions about your data?</strong><br>
+      Contact us at <a class="inline-link" href="mailto:bosssuitenl@gmail.com">bosssuitenl@gmail.com</a></p>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2026 Boss Suite Nederland. All rights reserved.
+  </footer>
+
+</body>
+</html>
