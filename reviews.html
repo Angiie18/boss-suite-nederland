@@ -45,9 +45,19 @@
     padding-bottom: 2px;
   }
   .nav-right { display: flex; align-items: center; gap: 18px; }
-  .lang-switch { display: flex; gap: 8px; font-size: 0.85rem; font-weight: 800; }
-  .lang-switch a { color: var(--muted); text-decoration: none; }
-  .lang-switch a.active { color: var(--gold-deep); }
+  .lang-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--paper-alt);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: var(--ink);
+    text-decoration: none;
+  }
 
   header.hero {
     max-width: 780px;
@@ -139,10 +149,7 @@
   <nav>
     <a class="logo" href="/">Boss Suite <em>Nederland</em></a>
     <div class="nav-right">
-      <div class="lang-switch">
-        <a href="/reviews.html" class="active">NL</a>
-        <a href="/reviews-en.html">EN</a>
-      </div>
+      <a href="/reviews-en.html" class="lang-toggle">🌐 EN</a>
       <a class="back-link" href="/">&larr; Terug naar de website</a>
     </div>
   </nav>

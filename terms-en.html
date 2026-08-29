@@ -47,9 +47,19 @@
     border-bottom: 1px solid var(--gold);
     padding-bottom: 2px;
   }
-  .lang-switch { display: flex; gap: 8px; font-size: 0.85rem; font-weight: 800; }
-  .lang-switch a { color: var(--muted); text-decoration: none; }
-  .lang-switch a.active { color: var(--gold-deep); }
+  .lang-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--paper-alt);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: var(--ink);
+    text-decoration: none;
+  }
 
   main {
     max-width: 780px;
@@ -129,10 +139,7 @@
   <nav>
     <a class="logo" href="/">Boss Suite <em>Nederland</em></a>
     <div class="nav-right">
-      <div class="lang-switch">
-        <a href="/terms.html">NL</a>
-        <a href="/terms-en.html" class="active">EN</a>
-      </div>
+      <a href="/terms.html" class="lang-toggle">🌐 NL</a>
       <a class="back-link" href="/">&larr; Back to the website</a>
     </div>
   </nav>
