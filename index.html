@@ -2931,6 +2931,7 @@ function CheckoutPage({ lang, back }) {
   const [status, setStatus] = useState("loading");
   const [errorMsg, setErrorMsg] = useState("");
   const [amountCents, setAmountCents] = useState(52e3);
+  const [email, setEmail] = useState("");
   const [discountCode, setDiscountCode] = useState("");
   const [discountStatus, setDiscountStatus] = useState("idle");
   const [discountMsg, setDiscountMsg] = useState("");
@@ -3022,14 +3023,23 @@ function CheckoutPage({ lang, back }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!stripeRef.current || !elementsRef.current) return;
+    if (!email.trim() || !email.includes("@")) {
+      setErrorMsg(en ? "Please fill in a valid email address." : "Vul een geldig e-mailadres in.");
+      return;
+    }
     setStatus("processing");
     setErrorMsg("");
     const { error } = await stripeRef.current.confirmPayment({
       elements: elementsRef.current,
       confirmParams: {
-        // Voor betaalmethodes die een externe stap nodig hebben (zoals iDEAL)
+        // Voor betaalmethodes die een externe stap nodig hebben (zoals iDEAL, Klarna)
         // komt de klant hier automatisch op terug.
-        return_url: `${window.location.origin}${window.location.pathname}#startup-gids`
+        return_url: `${window.location.origin}${window.location.pathname}#startup-gids`,
+        payment_method_data: {
+          billing_details: {
+            email: email.trim()
+          }
+        }
       }
     });
     if (error) {
@@ -3085,7 +3095,27 @@ function CheckoutPage({ lang, back }) {
       }
     },
     discountStatus === "checking" ? en ? "Checking\u2026" : "Bezig\u2026" : discountStatus === "applied" ? en ? "Applied" : "Toegepast" : en ? "Apply" : "Toepassen"
-  )), discountMsg && /* @__PURE__ */ React.createElement("p", { style: { fontFamily: "'Work Sans', sans-serif", fontSize: 12, marginTop: 8, marginBottom: 0, color: discountStatus === "applied" ? "#2E7D32" : "#B0503A" } }, discountMsg)), /* @__PURE__ */ React.createElement("div", { style: { background: colors.cream, border: `1px solid ${colors.line}`, borderRadius: 18, padding: "24px" } }, /* @__PURE__ */ React.createElement("p", { style: { fontFamily: "'Work Sans', sans-serif", fontSize: 13, fontWeight: 700, letterSpacing: 0.5, textTransform: "uppercase", color: colors.roseDeep, margin: "0 0 16px", display: "flex", alignItems: "center", gap: 6 } }, /* @__PURE__ */ React.createElement(ShieldCheck, { size: 15 }), " ", en ? "Secure payment" : "Veilig betalen"), status === "loading" && /* @__PURE__ */ React.createElement("p", { style: { fontFamily: "'Work Sans', sans-serif", fontSize: 13, color: colors.inkSoft, textAlign: "center", padding: "20px 0" } }, en ? "Loading payment form\u2026" : "Betaalformulier wordt geladen\u2026"), status === "error" && !errorMsg.includes("loop") && /* @__PURE__ */ React.createElement("p", { style: { fontFamily: "'Work Sans', sans-serif", fontSize: 13, color: "#B0503A", textAlign: "center", padding: "10px 0" } }, errorMsg), /* @__PURE__ */ React.createElement("form", { onSubmit: handleSubmit }, /* @__PURE__ */ React.createElement("div", { ref: paymentElementRef, style: { display: status === "loading" ? "none" : "block", marginBottom: 18 } }), status !== "loading" && /* @__PURE__ */ React.createElement(React.Fragment, null, errorMsg && status === "ready" && /* @__PURE__ */ React.createElement("p", { style: { fontFamily: "'Work Sans', sans-serif", fontSize: 12.5, color: "#B0503A", marginBottom: 12 } }, errorMsg), /* @__PURE__ */ React.createElement(
+  )), discountMsg && /* @__PURE__ */ React.createElement("p", { style: { fontFamily: "'Work Sans', sans-serif", fontSize: 12, marginTop: 8, marginBottom: 0, color: discountStatus === "applied" ? "#2E7D32" : "#B0503A" } }, discountMsg)), /* @__PURE__ */ React.createElement("div", { style: { background: colors.cream, border: `1px solid ${colors.line}`, borderRadius: 18, padding: "24px" } }, /* @__PURE__ */ React.createElement("p", { style: { fontFamily: "'Work Sans', sans-serif", fontSize: 13, fontWeight: 700, letterSpacing: 0.5, textTransform: "uppercase", color: colors.roseDeep, margin: "0 0 16px", display: "flex", alignItems: "center", gap: 6 } }, /* @__PURE__ */ React.createElement(ShieldCheck, { size: 15 }), " ", en ? "Secure payment" : "Veilig betalen"), status === "loading" && /* @__PURE__ */ React.createElement("p", { style: { fontFamily: "'Work Sans', sans-serif", fontSize: 13, color: colors.inkSoft, textAlign: "center", padding: "20px 0" } }, en ? "Loading payment form\u2026" : "Betaalformulier wordt geladen\u2026"), status === "error" && !errorMsg.includes("loop") && /* @__PURE__ */ React.createElement("p", { style: { fontFamily: "'Work Sans', sans-serif", fontSize: 13, color: "#B0503A", textAlign: "center", padding: "10px 0" } }, errorMsg), /* @__PURE__ */ React.createElement("form", { onSubmit: handleSubmit }, /* @__PURE__ */ React.createElement("div", { style: { marginBottom: 16 } }, /* @__PURE__ */ React.createElement("label", { style: { display: "block", fontFamily: "'Work Sans', sans-serif", fontSize: 12.5, fontWeight: 700, color: colors.ink, marginBottom: 6 } }, en ? "Email address" : "E-mailadres"), /* @__PURE__ */ React.createElement(
+    "input",
+    {
+      type: "email",
+      required: true,
+      value: email,
+      onChange: (e) => setEmail(e.target.value),
+      placeholder: en ? "you@example.com" : "jij@voorbeeld.nl",
+      style: {
+        width: "100%",
+        padding: "12px 14px",
+        borderRadius: 10,
+        border: `1.5px solid ${colors.line}`,
+        fontFamily: "'Work Sans', sans-serif",
+        fontSize: 14,
+        color: colors.ink,
+        outline: "none",
+        boxSizing: "border-box"
+      }
+    }
+  )), /* @__PURE__ */ React.createElement("div", { ref: paymentElementRef, style: { display: status === "loading" ? "none" : "block", marginBottom: 18 } }), status !== "loading" && /* @__PURE__ */ React.createElement(React.Fragment, null, errorMsg && status === "ready" && /* @__PURE__ */ React.createElement("p", { style: { fontFamily: "'Work Sans', sans-serif", fontSize: 12.5, color: "#B0503A", marginBottom: 12 } }, errorMsg), /* @__PURE__ */ React.createElement(
     "button",
     {
       type: "submit",
